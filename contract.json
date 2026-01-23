@@ -1,0 +1,126 @@
+[
+  {
+    "type": "configuration/entityTypes/Contract",
+    "attributes": {
+      "ContractID18Char": [
+        {
+          "value": "ContractId"
+        }
+      ],
+      "sfContractLink": [
+        {
+          "value": "ContractLink"
+        }
+      ],
+      "ContractNumber": [
+        {
+          "value": "PH"
+        }
+      ],
+      "ContractName": [
+        {
+          "value": "PH"
+        }
+      ],
+      "productFamily": [
+        {
+          "value": "PH"
+        }
+      ],
+      "ContractType": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "renewalAcv": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "ContractStatus": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "ProcurementChannel": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "ActivatedDate": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "ContractStartDate": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "ContractEndDate": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "HIPAAFinance": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "InternationalBusiness": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "Industry": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "MarketSegment": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "pooledApi": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "pooledRsu": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "pooledRih": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "pooledCP": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "CloudProvider": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "TenantDeploymentRegion": [
+        {
+          "value": "PLACEHOLDER"
+        }
+      ],
+      "Contract_details": "contract_detail_list",
+      "Base_Package_Details": "base_list"
+    },
+    "crosswalks": [
+      {
+        "type": "configuration/sources/Salesforce",
+        "value": "ContractID18Char",
+        "sourceTable": "Contract"
+      }
+    ]
+  }
+]

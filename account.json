@@ -1,0 +1,328 @@
+[
+  {
+    "type": "configuration/entityTypes/Organization",
+    "attributes": {
+      "Name": [
+        {
+          "value": "ContractId"
+        }
+      ],
+      "OrganizationType": [
+        {
+          "value": "api_usage_PH"
+        }
+      ],
+      "AccountRegion": [
+        {
+          "value": "api_usage_PH"
+        }
+      ],
+      "AccountTerritory": [
+        {
+          "value": "api_usage_PH"
+        }
+      ],
+      "WebsiteURL": [
+        {
+          "value": "api_usage_PH"
+        }
+      ],
+      "OriginalContractDate": [
+        {
+          "value": "api_usage_PH"
+        }
+      ],
+      "Industry": [
+        {
+          "value": "api_usage_PH"
+        }
+      ],
+      "subIndustry": [
+        {
+          "value": "api_usage_PH"
+        }
+      ],
+
+      "Site": [
+        {
+          "value": "PH"
+        }
+      ],
+      "MarketSegmentation": [
+        {
+          "value": "PH"
+        }
+      ],
+      "TargetAccount": [
+        {
+          "value": "PH"
+        }
+      ],
+      "PoRequired": [
+        {
+          "value": "PH"
+        }
+      ],
+      "RenewalPricingMethod": [
+        {
+          "value": "PH"
+        }
+      ],
+      "RenewalModel": [
+        {
+          "value": "PH"
+        }
+      ],
+      "SupportLevel": [
+        {
+          "value": "PH"
+        }
+      ],
+      "accountIntentScore6sense": [
+        {
+          "value": "PH"
+        }
+      ],
+      "Engaged": [
+        {
+          "value": "PH"
+        }
+      ],
+      "accountBuyingStage6sense": [
+        {
+          "value": "PH"
+        }
+      ],
+      "accountProfileScore6sense": [
+        {
+          "value": "PH"
+        }
+      ],
+      "EngagedContactCount": [
+        {
+          "value": "PH"
+        }
+      ],
+      "IsDeleted": [
+        {
+          "value": "PH"
+        }
+      ],
+      "accountProfileFit6sense": [
+        {
+          "value": "PH"
+        }
+      ],
+      "TenantID": [
+        {
+          "value": "PH"
+        }
+      ],
+      "ReltioTargetAccount": [
+        {
+          "value": "PH"
+        }
+      ],
+      "PartnerType": [
+        {
+          "value": "PH"
+        }
+      ],
+      "PartnerTierLevel": [
+        {
+          "value": "PH"
+        }
+      ],
+      "PartnerSubType": [
+        {
+          "value": "PH"
+        }
+      ],
+      "PartnerIntel": [
+        {
+          "value": "PH"
+        }
+      ],
+      "ParentId": [
+        {
+          "value": "PH"
+        }
+      ],
+      "OwnerId": [
+        {
+          "value": "PH"
+        }
+      ],
+      "CreatedDate": [
+        {
+          "value": "PH"
+        }
+      ],
+      "BuyingStage": [
+        {
+          "value": "PH"
+        }
+      ],
+      "AllboundID": [
+        {
+          "value": "PH"
+        }
+      ],
+      "CurrencyIsoCode": [
+        {
+          "value": "PH"
+        }
+      ],
+
+      "Total_Subscription_ACV__gc": [
+        {
+          "value": 
+          {
+            "Total_Subscription_ACV__gc": [
+            {
+              "value": "PH"
+            }
+            ],
+            "SalesRevenueCurrency": [
+            {
+              "value": "PH"
+            }
+            ]
+          }
+        }
+      ],
+      "Contract": "Contract list",
+      "Phone": [
+        {
+          "value": {
+            "Number": [
+            {
+                "value": "PH"
+            }
+            ]
+            }
+        }
+      ],
+      "EmployeeDetails": [
+        {
+          "value": {
+            "NumberOfEmployees": [
+            {
+                "value": "PH"
+            }
+            ]
+            }
+        }
+      ],
+      "SalesForceID": [
+        {
+          "value": "api_usage_PH"
+        }
+      ],
+      "KeyFinancialFiguresOverview": [
+        {
+          "value": {
+            "SalesRevenueAmount": [
+            {
+                "value": "PH"
+            }
+            ],
+            "SalesRevenueCurrencyCode": [
+            {
+                "value": "PH"
+            }
+            ]
+            }
+        }
+      ],
+      "Address": [
+        {
+          "value": {
+              "Active": [
+                  {
+                    "value": "true"
+                  }
+              ],
+              "AddressLine1": [
+                  {
+                    "value": "line1"
+                  }
+              ],
+              "Country": [
+                  {
+                    "value": "country"
+                  }
+              ],
+              "StateProvince": [
+                  {
+                    "value": "state"
+                  }
+              ],
+              "City": [
+                  {
+                    "value": "city"
+                  }
+              ],
+              "ISO3166-2": [
+                  {
+                    "value": "US"
+                  }
+              ],
+              "Zip": [
+                {
+                  "value": {
+                      "Zip5": [
+                          {
+                            "value": "zip5"
+                          }
+                      ],
+                      "Zip4": [
+                          {
+
+                            "value": "zip4"
+                          }
+                      ]
+                  }
+                }
+            ]
+          },
+          "refEntity": {
+              "type": "configuration/entityTypes/Location",
+              "crosswalks": [
+                  {
+                      "type": "configuration/sources/Salesforce",
+                      "sourceTable": "Account_Location",
+                      "value": "Surrogate"
+                  }
+              ]
+          },
+          "refRelation": {
+              "type": "configuration/relationTypes/OrganizationHasAddress",
+              "crosswalks": [
+                  {
+                      "type": "configuration/sources/Salesforce",
+                      "value": "accountID",
+                      "sourceTable": "Account_Location"
+                  }
+              ]
+          }
+        }
+      ]
+    },
+    "crosswalks": [
+      {
+        "type": "configuration/sources/Salesforce",
+        "value": "accountId",
+        "sourceTable": "Customer_Account",
+        "dataProvider": true
+      },
+      {
+        "type": "configuration/sources/Salesforce",
+        "value": "accountId",
+        "sourceTable": "Account",
+        "dataProvider": false,
+        "contributorProvider": true
+      }
+    ]
+  }
+]

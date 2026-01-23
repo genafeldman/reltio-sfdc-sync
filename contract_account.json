@@ -1,0 +1,40 @@
+[
+    {
+        "value": {
+            "ContractName": [
+                {
+                    "type": "configuration/entityTypes/Contract/attributes/ContractName",
+                    "value": "PH - mdmTenantID"
+                }
+            ]
+        },
+        "refEntity": {
+            "type": "configuration/entityTypes/Contract",
+            "crosswalks": [
+                {
+                    "type": "configuration/sources/Salesforce",
+                    "sourceTable": "Account_Contract",
+                    "value": "ContractID",
+                    "dataProvider": true
+                },
+                {
+                    "type": "configuration/sources/Salesforce",
+                    "sourceTable": "Contract",
+                    "value": "ContractID",
+                    "dataProvider": false,
+                    "contributorProvider": true
+                }
+            ]
+        },
+        "refRelation": {
+            "type": "configuration/relationTypes/OrgToContract",
+            "crosswalks": [
+                {
+                    "type": "configuration/sources/Salesforce",
+                    "value": "Account_Contract",
+                    "sourceTable": "Account_Contract"
+                }
+            ]
+        }
+    }
+ ]

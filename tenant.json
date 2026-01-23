@@ -1,0 +1,200 @@
+[
+  {
+    "type": "configuration/entityTypes/Tenant",
+    "attributes": {
+      "TenantID": [
+        {
+          "value": "tenant_id"
+        }
+      ],
+      "shortDescription": [
+        {
+          "value": "PH -shortDescription"
+        }
+      ],
+      "TenantType": [
+        {
+          "value": "PH -TenantType"
+        }
+      ],
+      "TenantRecordType": [
+        {
+          "value": "PH -TenantRecordType"
+        }
+      ],
+      "Environment": [
+        {
+          "value": "PH -Environment"
+        }
+      ],
+      "subscriptionName": [
+        {
+          "value": "PH -subscriptionName"
+        }
+      ],
+      "subscriptionId": [
+        {
+          "value": "PH -subscriptionId"
+        }
+      ],
+      "subStartDate": [
+        {
+          "value": "PH -subStartDate"
+        }
+      ],
+      "subEndDate": [
+        {
+          "value": "PH -subEndDate"
+        }
+      ],
+      "TenantdeploymentCloud": [
+        {
+          "value": "PH -TenantdeploymentCloud"
+        }
+      ],
+      "TenantdeploymentRegion": [
+        {
+          "value": "PH -TenantdeploymentRegion"
+        }
+      ],
+      "ownedByReltioDept": [
+        {
+          "value": "ownedByReltioDept"
+        }
+      ],
+      "Root_ID": [
+        {
+          "value": "Root_ID"
+        }
+      ],
+      "EndUserCustomer": [
+        {
+          "value": {
+            "Name": [
+              {
+                "value": "AccountName"
+              }
+            ]
+          },
+          "refEntity": {
+            "crosswalks": [
+              {
+                "type": "Salesforce",
+                "value": "accountID",
+                "sourceTable": "Account_Tenant",
+                "dataProvider": true
+              },
+              {
+                "type": "Salesforce",
+                "value": "accountID",
+                "sourceTable": "Account",
+                "dataProvider": false,
+                "contributorProvider": true
+              }
+            ]
+          },
+          "refRelation": {
+            "crosswalks": [
+              {
+                "value": "accountID_tenantId",
+                "type": "Salesforce",
+                "sourceTable": "Account_Tenant"
+              }
+            ]
+          }
+        }
+      ],
+      "BasePackageContract": [
+        {
+          "value": {
+            "ContractName": [
+              {
+                "value": "ContractName"
+              }
+            ]
+          },
+          "refEntity": {
+            "crosswalks": [
+              {
+                "type": "Salesforce",
+                "value": "contractID",
+                "sourceTable": "Contract_BaseTenant",
+                "dataProvider": true
+              },
+              {
+                "type": "Salesforce",
+                "value": "contractID",
+                "sourceTable": "Contract",
+                "dataProvider": false,
+                "contributorProvider": true
+              }
+            ]
+          },
+          "refRelation": {
+            "crosswalks": [
+              {
+                "value": "contractId_tenantId",
+                "type": "Salesforce",
+                "sourceTable": "Contract_BaseTenant"
+              }
+            ]
+          }
+        }
+      ],
+      "AdditionalContract": [
+        {
+          "value": {
+            "ContractName": [
+              {
+                "value": "ContractName"
+              }
+            ]
+          },
+          "refEntity": {
+            "type": "configuration/sources/Salesforce",
+            "crosswalks": [
+              {
+                "type": "Salesforce",
+                "value": "contractID",
+                "sourceTable": "Contract_AddTenant",
+                "dataProvider": true
+              },
+              {
+                "type": "Salesforce",
+                "value": "contractID",
+                "sourceTable": "Contract",
+                "dataProvider": false,
+                "contributorProvider": true
+              }
+            ]
+          },
+          "refRelation": {
+            "crosswalks": [
+              {
+                "value": "contractId_tenantId",
+                "type": "Salesforce",
+                "sourceTable": "Contract_AddTenant"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "crosswalks": [
+      {
+        "url": "/TenantID",
+        "type": "configuration/sources/PCC",
+        "value": "TenantID",
+        "sourceTable": "Tenant_SFDC",
+        "dataProvider": true
+      },
+      {
+        "type": "configuration/sources/PCC",
+        "value": "TenantID",
+        "sourceTable": "Tenant",
+        "dataProvider": false,
+        "contributorProvider": true
+      }
+    ]
+  }
+]
