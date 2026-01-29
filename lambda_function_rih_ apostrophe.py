@@ -670,18 +670,16 @@ def main(event, context):
         }
     df = pd.json_normalize(json_file)
     a = pd.json_normalize(df['packages'])
-    full_response_df = pd.DataFrame(columns=list(pd.json_normalize(a[0]).columns))
-    for i in list(a.columns):
-        b = pd.json_normalize(a[i])
-        full_response_df = pd.concat([full_response_df, b])
+    # Fix: Collect all DataFrames in list first, then concat once (pandas 3.0 compatible)
+    dfs = [pd.json_normalize(a[i]) for i in list(a.columns)]
+    full_response_df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
         
     full_response_df = full_response_df[full_response_df['isActive']==True]
     package_type = full_response_df[['packageType', 'subscriptionId']]
     full_response_df = pd.json_normalize(full_response_df['mdmTenants'])
-    tenant_df = pd.DataFrame(columns=list(pd.json_normalize(full_response_df[0]).columns))
-    for i in list(full_response_df.columns):
-        b = pd.json_normalize(full_response_df[i])
-        tenant_df = pd.concat([tenant_df, b])
+    # Fix: Collect all DataFrames in list first, then concat once (pandas 3.0 compatible)
+    dfs = [pd.json_normalize(full_response_df[i]) for i in list(full_response_df.columns)]
+    tenant_df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
 
     required_cols = [
     'tenantId', 'tenantPurpose', 'reltioEnv', 'deploymentCloud', 'deploymentRegion',

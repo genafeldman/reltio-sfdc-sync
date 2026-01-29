@@ -1,0 +1,6 @@
+.env
+__pycache__/
+output.log
+sfdc.rtf
+.DS_Store
+.venv/
