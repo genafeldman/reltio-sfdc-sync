@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/genadifeldman/reltio-sfdc-sync commit -m \"$\\(cat <<''EOF''\nAdd local development setup and RSU decimal fix\n\n- Fix RSU and Total RSU fields to preserve decimal values \\(removed int\\(\\) truncation\\)\n- Add requirements.txt for dependencies\n- Add .env.template for environment configuration\n- Add test_local.py for local testing\n- Add lambda function variants with RIH apostrophe handling\n- Add .gitignore to exclude sensitive files\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /Users/genadifeldman/reltio-sfdc-sync push origin main)"
+    ]
+  }
+}

@@ -322,6 +322,12 @@ def main(event, context):
         done = y['done']
         i+=1
     
+    # # ========== TEST MODE - Remove before production ==========
+    # test_accounts = ['0010a00001XSoZcAAL', '001Qj00000FEuT7IAL', '001Qj00000adpCPIAY', '001j0000006DyLtAAK', ]
+    # full_df = full_df[full_df['SBQQ__Account__c'].isin(test_accounts)]
+    # print(f"TEST MODE: Filtering to {len(test_accounts)} accounts only")
+    # print(f"DEBUG: full_df has {len(full_df)} rows, {full_df['SBQQ__Account__c'].nunique()} unique accounts")
+    # # ==========================================================
     
     full_payload = []
     i = 0
@@ -546,11 +552,11 @@ def main(event, context):
                 #     max_iloc = 0
                 if not all_usage_row.empty:
                     cp_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR CP Entitlement', 'SBQQ__Quantity__c': str(int(float(all_usage_row['Consolidated_Profiles__c'].iloc[0] or 0))), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
-                    rsu_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR RSU Storage Entitlement', 'SBQQ__Quantity__c': str(int(float(all_usage_row['Reltio_Storage_Unit_RSU__c'].iloc[0] or 0))), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
-                    total_rsu_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR Total RSU Entitlement', 'SBQQ__Quantity__c': str(int(float(all_usage_row['Total_RSU_Quantity__c'].iloc[0] or 0))), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
+                    rsu_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR RSU Storage Entitlement', 'SBQQ__Quantity__c': str(float(all_usage_row['Reltio_Storage_Unit_RSU__c'].iloc[0] or 0)), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
+                    total_rsu_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR Total RSU Entitlement', 'SBQQ__Quantity__c': str(float(all_usage_row['Total_RSU_Quantity__c'].iloc[0] or 0)), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
                     agentflow_credit_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR Agentflow Credits Entitlement', 'SBQQ__Quantity__c': str(int(float(all_usage_row['Agentflow_Credits__c'].iloc[0] or 0))), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
                     agentflow_mngd_credit_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR Agentflow Credits Managed Entitlement', 'SBQQ__Quantity__c': str(int(float(all_usage_row['Agentflow_Credits_Managed__c'].iloc[0] or 0))), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])                    
-                    rsu_unit_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR RSU Quantity', 'SBQQ__Quantity__c': str(int(float(all_usage_row['RSU_Quantity__c'].iloc[0] or 0))), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
+                    rsu_unit_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR RSU Quantity', 'SBQQ__Quantity__c': str(float(all_usage_row['RSU_Quantity__c'].iloc[0] or 0)), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
                     api_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR API Usage Entitlement', 'SBQQ__Quantity__c': str(int(float(all_usage_row['Usage_Data_API__c'].iloc[0] or 0))), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
                     rih_usage_rows = pd.DataFrame({'SBQQ__ProductName__c': 'ROR RIH Tasks Entitlement', 'SBQQ__Quantity__c': str(int(float(all_usage_row['RIH_Tasks__c'].iloc[0] or 0))), 'SBQQ__RootId__c': all_usage_row['SBQQ__RootId__c'].iloc[0], 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
                     root_id_rows = pd.DataFrame({'SBQQ__ProductName__c': 'Package Link', 'SBQQ__Quantity__c': 0.0, 'SBQQ__RootId__c': root_id, 'sf_package_link': f'https://reltio.lightning.force.com/lightning/r/SBQQ__Subscription__c/{root_id}/view', 'Package_Mapping__c': all_usage_row['Package_Mapping__c'].iloc[0], 'Domain_Name2__c': all_usage_row['Domain_Name2__c'].iloc[0], 'Product_Code__c': all_usage_row['Product_Code__c'].iloc[0], 'SBQQ__SubscriptionStartDate__c': all_usage_row['SBQQ__SubscriptionStartDate__c'].iloc[0], 'SBQQ__SubscriptionEndDate__c': all_usage_row['SBQQ__SubscriptionEndDate__c'].iloc[0]}, index=[0])
@@ -572,7 +578,7 @@ def main(event, context):
                     with open(f"{folder_path}base_package_list.json", encoding="utf-8") as file:
                         temp_contract_detail = json.load(file).copy()
                     temp_contract_detail = add_pop_package(temp_contract_detail, temp_contract_detail_df['SBQQ__ProductName__c'].iloc[i], 'Product_Name')
-                    temp_contract_detail = add_pop_package(temp_contract_detail, str(int(float(temp_contract_detail_df['SBQQ__Quantity__c'].iloc[i] or 0))), 'Product_Quantity')
+                    temp_contract_detail = add_pop_package(temp_contract_detail, str(float(temp_contract_detail_df['SBQQ__Quantity__c'].iloc[i] or 0)), 'Product_Quantity')
                     temp_contract_detail = add_pop_package(temp_contract_detail, temp_contract_detail_df['SBQQ__RootId__c'].iloc[i], 'RootID')
                     temp_contract_detail = add_pop_package(temp_contract_detail, temp_contract_detail_df['SBQQ__SubscriptionStartDate__c'].iloc[i], 'Start_Date')
                     temp_contract_detail = add_pop_package(temp_contract_detail, temp_contract_detail_df['SBQQ__SubscriptionEndDate__c'].iloc[i], 'End_Date')
@@ -670,18 +676,16 @@ def main(event, context):
         }
     df = pd.json_normalize(json_file)
     a = pd.json_normalize(df['packages'])
-    full_response_df = pd.DataFrame(columns=list(pd.json_normalize(a[0]).columns))
-    for i in list(a.columns):
-        b = pd.json_normalize(a[i])
-        full_response_df = pd.concat([full_response_df, b])
+    # Fix: Collect all DataFrames in list first, then concat once (pandas 3.0 compatible)
+    dfs = [pd.json_normalize(a[i]) for i in list(a.columns)]
+    full_response_df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
         
     full_response_df = full_response_df[full_response_df['isActive']==True]
     package_type = full_response_df[['packageType', 'subscriptionId']]
     full_response_df = pd.json_normalize(full_response_df['mdmTenants'])
-    tenant_df = pd.DataFrame(columns=list(pd.json_normalize(full_response_df[0]).columns))
-    for i in list(full_response_df.columns):
-        b = pd.json_normalize(full_response_df[i])
-        tenant_df = pd.concat([tenant_df, b])
+    # Fix: Collect all DataFrames in list first, then concat once (pandas 3.0 compatible)
+    dfs = [pd.json_normalize(full_response_df[i]) for i in list(full_response_df.columns)]
+    tenant_df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame()
 
     required_cols = [
     'tenantId', 'tenantPurpose', 'reltioEnv', 'deploymentCloud', 'deploymentRegion',

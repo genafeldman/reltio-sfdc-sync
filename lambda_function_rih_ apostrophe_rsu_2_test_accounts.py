@@ -322,11 +322,11 @@ def main(event, context):
         done = y['done']
         i+=1
     
-    # ========== TEST MODE - Remove before production ==========
-    test_accounts = ['0010a00001XSoZcAAL', '001Qj00000FEuT7IAL']
-    full_df = full_df[full_df['SBQQ__Account__c'].isin(test_accounts)]
-    print(f"TEST MODE: Filtering to {len(test_accounts)} accounts only")
-    # ==========================================================
+    # # ========== TEST MODE - Remove before production ==========
+    # test_accounts = ['0010a00001XSoZcAAL', '001Qj00000FEuT7IAL']
+    # full_df = full_df[full_df['SBQQ__Account__c'].isin(test_accounts)]
+    # print(f"TEST MODE: Filtering to {len(test_accounts)} accounts only")
+    # # ==========================================================
     
     full_payload = []
     i = 0
